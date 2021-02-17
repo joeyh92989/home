@@ -107,7 +107,7 @@ class BuildingTest < Minitest::Test
     unit1.add_renter(renter2)
     building.rented_units
     building.renters
-    #require 'pry'; binding.pry
+    # require 'pry'; binding.pry
     assert_equal renter2, building.renter_with_highest_rent
   end
 
@@ -119,7 +119,7 @@ class BuildingTest < Minitest::Test
     unit4 = Apartment.new({ number: 'D4', monthly_rent: 1500, bathrooms: 2, bedrooms: 3 })
     renter1 = Renter.new('Spencer')
     renter2 = Renter.new('Jessie')
-    renter3 = Renter.new("Max")
+    renter3 = Renter.new('Max')
     building.add_unit(unit1)
     building.add_unit(unit2)
     building.add_unit(unit3)
@@ -130,9 +130,8 @@ class BuildingTest < Minitest::Test
     building.rented_units
     building.renters
 
-    expected = {3 =>["D4"], 2 => ["B2", "C3"], 1 => ["A1"]}
-#require 'pry'; binding.pry
+    expected = { 3 => ['D4'], 2 => %w[B2 C3], 1 => ['A1'] }
+    # require 'pry'; binding.pry
     assert_equal expected, building.units_by_number_of_bedrooms
-
   end
 end

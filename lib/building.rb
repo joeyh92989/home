@@ -1,7 +1,8 @@
 class Building
   attr_reader :units
+
   def initialize
-    @units =[]
+    @units = []
     @renters = []
     @rented_units = []
   end
@@ -13,7 +14,7 @@ class Building
   def renters
     @renters = []
     not_vacant = @units.find_all do |unit|
-    unit.renter != nil
+      !unit.renter.nil?
     end
 
     not_vacant.each do |unit|
@@ -34,7 +35,7 @@ class Building
     @rented_units = []
 
     not_vacant = @units.find_all do |unit|
-    unit.renter != nil
+      !unit.renter.nil?
     end
 
     not_vacant.each do |unit|
@@ -60,34 +61,34 @@ class Building
 
   def units_by_number_of_bedrooms
     units_by_number_of_bedrooms = {
-                                  3 => [],
-                                  2 => [],
-                                  1 => []
-                                  }
+      3 => [],
+      2 => [],
+      1 => []
+    }
 
-      units_with_3_bedrooms = @units.find_all do |unit|
-        unit.bedrooms == 3
-      end
+    units_with_3_bedrooms = @units.find_all do |unit|
+      unit.bedrooms == 3
+    end
 
-      units_with_2_bedrooms = @units.find_all do |unit|
-        unit.bedrooms == 2
-      end
+    units_with_2_bedrooms = @units.find_all do |unit|
+      unit.bedrooms == 2
+    end
 
-      units_with_1_bedrooms = @units.find_all do |unit|
-        unit.bedrooms == 1
-      end
+    units_with_1_bedrooms = @units.find_all do |unit|
+      unit.bedrooms == 1
+    end
 
-      units_with_3_bedrooms.each do |unit|
-        units_by_number_of_bedrooms[3] << unit.number
-      end
+    units_with_3_bedrooms.each do |unit|
+      units_by_number_of_bedrooms[3] << unit.number
+    end
 
-      units_with_2_bedrooms.each do |unit|
-         units_by_number_of_bedrooms[2] << unit.number
-       end
+    units_with_2_bedrooms.each do |unit|
+      units_by_number_of_bedrooms[2] << unit.number
+    end
 
-       units_with_1_bedrooms.each do |unit|
-         units_by_number_of_bedrooms[1] << unit.number
-       end
-       units_by_number_of_bedrooms
+    units_with_1_bedrooms.each do |unit|
+      units_by_number_of_bedrooms[1] << unit.number
+    end
+    units_by_number_of_bedrooms
   end
 end
