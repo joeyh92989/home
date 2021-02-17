@@ -134,4 +134,21 @@ class BuildingTest < Minitest::Test
     # require 'pry'; binding.pry
     assert_equal expected, building.units_by_number_of_bedrooms
   end
+
+  def test_annual_breakdown
+    building = Building.new
+    unit1 = Apartment.new({number: "A1", monthly_rent: 1200, bathrooms: 1, bedrooms: 1})
+    unit2 = Apartment.new({number: "B2", monthly_rent: 999, bathrooms: 2, bedrooms: 2})
+    unit3 = Apartment.new({number: "C3", monthly_rent: 1150, bathrooms: 2, bedrooms: 2})
+    renter1 = Renter.new("Spencer")
+    building.add_unit(unit1)
+    building.add_unit(unit2)
+    building.add_unit(unit3)
+    unit2.add_renter(renter1)
+    building.rented_units
+    building.renters
+    expected = {"Spencer" => 11988}
+
+    assert_equal expected, building.annual_breakdown
+  end
 end

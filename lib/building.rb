@@ -5,6 +5,7 @@ class Building
     @units = []
     @renters = []
     @rented_units = []
+    @annual_breakdown
   end
 
   def add_unit(unit)
@@ -90,5 +91,10 @@ class Building
       units_by_number_of_bedrooms[1] << unit.number
     end
     units_by_number_of_bedrooms
+  end
+
+  def annual_breakdown
+    @annual_breakdown ={}
+    
   end
 end
